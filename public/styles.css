@@ -158,6 +158,9 @@ td.num, th.num { text-align: right; }
   z-index: 100;
   padding: 20px;
 }
+.modal[hidden] {
+  display: none;
+}
 .modal-card {
   background: var(--panel);
   border: 1px solid var(--border);
