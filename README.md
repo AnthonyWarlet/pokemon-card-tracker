@@ -21,7 +21,18 @@ Cardmarket en euros (`trend`, `avg`, `low`, moyennes 7 j / 30 j) pour l'anglais 
 
 - [Node.js](https://nodejs.org/) 20 ou plus
 
-## Installation
+## Démarrage rapide sur Windows (débutant)
+
+1. Installe **Node.js** : va sur https://nodejs.org, télécharge la version **LTS**,
+   ouvre le fichier `.msi` et clique « Next » jusqu'à « Install ».
+2. Décompresse le dossier de l'application (clic droit sur le `.zip` → « Extraire tout »).
+3. Ouvre le dossier et **double-clique sur `start-windows.bat`**.
+   - La première fois, il installe les composants (1-2 min) puis ouvre l'appli
+     dans ton navigateur sur http://localhost:3000.
+   - Les fois suivantes, il ouvre directement l'appli.
+4. Pour arrêter l'appli, ferme la fenêtre noire (ou appuie sur `Ctrl + C` dedans).
+
+## Installation (en ligne de commande)
 
 ```bash
 npm install

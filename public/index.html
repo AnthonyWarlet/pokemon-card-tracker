@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Card Tracker — Cote Cardmarket</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ef4444'/%3E%3Crect y='45' width='100' height='10' fill='%23111'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23fff' stroke='%23111' stroke-width='6'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">●</span>
+        <h1>Pokémon Card Tracker</h1>
+      </div>
+      <div class="stats" id="stats">
+        <div class="stat"><span class="stat-val" id="stat-cards">—</span><span class="stat-lbl">cartes</span></div>
+        <div class="stat"><span class="stat-val" id="stat-entries">—</span><span class="stat-lbl">références</span></div>
+        <div class="stat"><span class="stat-val" id="stat-value">—</span><span class="stat-lbl">valeur MKM</span></div>
+      </div>
+      <div class="actions">
+        <button id="btn-refresh" class="btn btn-primary">↻ Rafraîchir les cotes</button>
+        <a href="/api/export.csv" class="btn">⇩ Export CSV</a>
+        <button id="btn-import" class="btn">⇧ Import CSV</button>
+        <input type="file" id="file-import" accept=".csv,text/csv" hidden />
+      </div>
+    </header>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <main>
+      <section class="panel search-panel">
+        <h2>Ajouter une carte</h2>
+        <div class="search-row">
+          <div class="lang-toggle" id="search-lang">
+            <button data-lang="en" class="active">EN 🇬🇧</button>
+            <button data-lang="ja">JP 🇯🇵</button>
+          </div>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Nom de la carte (ex : Charizard, リザードン)…"
+            autocomplete="off"
+          />
+          <button id="btn-search" class="btn btn-primary">Rechercher</button>
+        </div>
+        <div id="search-results" class="results-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="collection-head">
+          <h2>Ma collection</h2>
+          <div class="filters">
+            <input type="text" id="filter-text" placeholder="Filtrer par nom / set…" />
+            <select id="filter-lang">
+              <option value="">Toutes langues</option>
+              <option value="en">Anglais</option>
+              <option value="ja">Japonais</option>
+            </select>
+            <select id="sort-by">
+              <option value="created">Récemment ajoutées</option>
+              <option value="value">Valeur (décroissant)</option>
+              <option value="name">Nom (A→Z)</option>
+              <option value="set">Set</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="collection-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Carte</th>
+                <th>Set / N°</th>
+                <th>Langue</th>
+                <th>Qté</th>
+                <th>Cote (trend)</th>
+                <th>Low</th>
+                <th>Moy. 30j</th>
+                <th>Total</th>
+                <th>MàJ</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="collection-body"></tbody>
+          </table>
+        </div>
+        <div id="collection-empty" class="empty" hidden>
+          Aucune carte pour l'instant. Cherchez une carte ci-dessus pour l'ajouter, ou importez un CSV.
+        </div>
+      </section>
+    </main>
+
+    <div id="modal" class="modal" hidden>
+      <div class="modal-card" id="modal-card"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
